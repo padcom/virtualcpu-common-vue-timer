@@ -15,10 +15,8 @@ export default defineComponent({
     Led,
   },
   setup() {
-    const timer = ref(0)
     const state = ref(false)
-    onMounted(() => timer.value = setInterval(() => state.value = !state.value, 500))
-    onBeforeUnmount(() => { clearInterval(timer.value); state.value = 0 })
+    useTimer(() => state.value = !state.value)
 
     return { state }
   },
